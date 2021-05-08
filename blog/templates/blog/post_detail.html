@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load markdown_extra %}
+
+{% block title %}{{ object.title }} | {{ block.super }}{% endblock %}
+{% block description %}{{ object.description }}{% endblock %}
+{% load static %}
+
+
+{% block link %}
+<link rel="stylesheet" href="{% static 'blog/css/detail.css' %}">
+<link href="{% static 'mdeditor/css/editormd.min.css' %}" rel="stylesheet">
+<link href="{% static 'mdeditor/css/editormd.preview.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row">
+    <main class="col-md-8">
+      <article class="blog-area " id="content" >
+        <h1>{{ object.title }}</h1>
+        <p>{{ object.published_at|date }}</p>
+        {% for tag in object.tags.all %}
+        {{ tag.name }}
+    
+        {% endfor %}
+        <hr>
+        {{ object.content|markdown|safe }}
+      </article>
+      <article class="comment-area">
+        {% include "blog/snippets/comments.html" %}
+        <a class="btn btn-outline-secondary my-3" href="{% url 'blog:comment_form' post.pk %}">コメントを投稿する</a>
+      </article>
+    </main>
+    <aside class="col-md-4">
+      {% include "blog/snippets/sidebar.html" %}
+    </aside>
+  </div>
+</div>
+{% endblock %}

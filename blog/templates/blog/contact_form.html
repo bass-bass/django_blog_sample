@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block link %}
+<link rel="stylesheet" href="{% static 'blog/css/about.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>お問い合わせ</h1>
+      <p>お問い合わせフォームです。</p>
+      <form method="POST">{% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">送信</button>
+      </form>
+    </div>
+    <aside class="col-md-4">
+        {% include "blog/snippets/sidebar.html" %}
+    </aside>
+  </div>
+</div>
+{% endblock %}

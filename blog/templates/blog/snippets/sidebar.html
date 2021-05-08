@@ -1,0 +1,45 @@
+<div class="card md-3">
+  <div class="card">
+    <h5 class="card-header">
+      Profile
+    </h5>
+    <div class="card-body text-center">
+      This is my profile.
+    
+    </div>
+  </div>
+</div>
+
+<!-- Search Widget -->
+<div class="card md-3">
+  <h5 class="card-header">Search</h5>
+  <div class="card-body">
+    <form class="input-group" action="{% url 'blog:search_post' %}" method="GET">
+      <input type="serch" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Search for...">
+      <span class="input-group-append">
+        <button class="btn btn-secondary" type="button">Go!</button>
+      </span>
+    </form>
+  </div>
+</div>
+  
+<div class="card md-3">
+  <div class="card">
+    <h5 class="card-header">
+      Tags
+    </h5>
+    <ul class="list-group list-group-flush">
+      {% for tag in tags|dictsortreversed:"num_posts"|slice:":5" %}
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <a href="{% url 'blog:tag_post' tag.slug %}" class="card-link">{{ tag.name }}</a>
+        <span class="badge badge-secondary badge-pill">{{ tag.num_posts }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+    <!--
+    <div class="card-body text-center">
+      <a href="{% url 'blog:tag_list' %}" class="card-link">すべてのタグを見る</a>
+    </div>
+    -->
+  </div>
+</div>
