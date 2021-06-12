@@ -25,10 +25,14 @@
         <hr>
         {{ object.content|markdown|safe }}
       </article>
+
+      <!-- コメント投稿
       <article class="comment-area">
         {% include "blog/snippets/comments.html" %}
         <a class="btn btn-outline-secondary my-3" href="{% url 'blog:comment_form' post.pk %}">コメントを投稿する</a>
       </article>
+    -->
+
     </main>
     <aside class="col-md-4">
       {% include "blog/snippets/sidebar.html" %}

@@ -1,10 +1,13 @@
+{% load static %}
 <div class="card md-3">
   <div class="card">
     <h5 class="card-header">
       Profile
     </h5>
     <div class="card-body text-center">
-      This is my profile.
+      <img src="{% static 'blog/img/icon.png' %}" width="120px" height="120px" alt="">
+      <h4><br>Me<br></h4>
+      <p><br>京都大学工学部の四回生<br>化学系の研究室に所属しています<br>エンジニアとしての就職を目指し、<br>現在は独学で勉強中です。</p>
     
     </div>
   </div>
@@ -17,7 +20,7 @@
     <form class="input-group" action="{% url 'blog:search_post' %}" method="GET">
       <input type="serch" name="q" value="{{ request.GET.q }}" class="form-control" placeholder="Search for...">
       <span class="input-group-append">
-        <button class="btn btn-secondary" type="button">Go!</button>
+        <button class="btn btn-secondary" type="submit">Go!</button>
       </span>
     </form>
   </div>
