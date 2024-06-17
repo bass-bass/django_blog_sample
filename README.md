@@ -1,1 +1,2 @@
-## Djangoによるブログ機能実装サンプル
+# django_blog_sample
+Djangoによるブログ機能実装サンプル
